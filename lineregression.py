@@ -25,7 +25,7 @@ def rst2arr(rasterfile):
     #proj = dataset.GetProjection()
     #geotrans = dataset.GetGeoTransform()
     #noDataValue = band.GetNoDataValue()
-    print "Output file %s size:" % rasterfile, xsize, ysize
+    print( "Output file:", rasterfile, 'size: ', xsize, ysize)
     rastervalue = band.ReadAsArray(xoff=0, yoff=0, win_xsize=xsize, win_ysize=ysize)
     return rastervalue
 
@@ -34,7 +34,7 @@ def timevec(root_dir):
     arr_list = []
     for i in range(t_num):
         for file in raw_files:
-            if t_series[i] in file:
+            if t_series[i] in file and file.endswith('.tif'):
                 file_dir = os.path.join(root_dir,file)
                 rstarr = rst2arr(file_dir)
                 arr_list.append(rstarr)
